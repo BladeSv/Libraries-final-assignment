@@ -1,6 +1,7 @@
 package by.htp.entities;
 
 import java.util.List;
+import java.util.Map;
 
 public class Reader {
 private String name;
@@ -9,13 +10,19 @@ private String surname;
 private String login;
 private String pass;
 private int nunberReadBooks;
+private String status;
+
 private List<BookTransaction> takenBooks;
 
 
 
 
+
+
+
+
 public Reader(String name, String secondName, String surname, String login, String pass, int nunberReadBooks,
-		List<BookTransaction> takenBooks) {
+		String status, List<BookTransaction> takenBooks) {
 	super();
 	this.name = name;
 	this.secondName = secondName;
@@ -23,8 +30,40 @@ public Reader(String name, String secondName, String surname, String login, Stri
 	this.login = login;
 	this.pass = pass;
 	this.nunberReadBooks = nunberReadBooks;
+	this.status = status;
 	this.takenBooks = takenBooks;
 }
+
+
+public String getPass() {
+	return pass;
+}
+
+
+public void setPass(String pass) {
+	this.pass = pass;
+}
+
+
+public void setLogin(String login) {
+	this.login = login;
+}
+
+
+
+
+
+public String getStatus() {
+	return status;
+}
+
+
+public void setStatus(String status) {
+	this.status = status;
+}
+
+
+
 
 
 public Reader() {
@@ -51,18 +90,15 @@ public String getSurname() {
 public void setSurname(String surname) {
 	this.surname = surname;
 }
+
+
+
+
 public String getLogin() {
 	return login;
 }
-public void setLogin(String login) {
-	this.login = login;
-}
-public String getPass() {
-	return pass;
-}
-public void setPass(String pass) {
-	this.pass = pass;
-}
+
+
 public int getNunberReadBooks() {
 	return nunberReadBooks;
 }
@@ -86,6 +122,7 @@ public int hashCode() {
 	result = prime * result + nunberReadBooks;
 	result = prime * result + ((pass == null) ? 0 : pass.hashCode());
 	result = prime * result + ((secondName == null) ? 0 : secondName.hashCode());
+	result = prime * result + ((status == null) ? 0 : status.hashCode());
 	result = prime * result + ((surname == null) ? 0 : surname.hashCode());
 	result = prime * result + ((takenBooks == null) ? 0 : takenBooks.hashCode());
 	return result;
@@ -123,6 +160,11 @@ public boolean equals(Object obj) {
 			return false;
 	} else if (!secondName.equals(other.secondName))
 		return false;
+	if (status == null) {
+		if (other.status != null)
+			return false;
+	} else if (!status.equals(other.status))
+		return false;
 	if (surname == null) {
 		if (other.surname != null)
 			return false;
@@ -140,7 +182,8 @@ public boolean equals(Object obj) {
 @Override
 public String toString() {
 	return "Reader [name=" + name + ", secondName=" + secondName + ", surname=" + surname + ", login=" + login
-			+ ", pass=" + pass + ", nunberReadBooks=" + nunberReadBooks + ", takenBooks=" + takenBooks + "]";
+			+ ", pass=" + pass + ", nunberReadBooks=" + nunberReadBooks + ", status=" + status + ", takenBooks="
+			+ takenBooks + "]";
 }
 
  

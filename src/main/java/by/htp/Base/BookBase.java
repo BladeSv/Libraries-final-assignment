@@ -1,3 +1,4 @@
+package by.htp.Base;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
