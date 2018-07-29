@@ -3,23 +3,33 @@ package by.htp.menu;
 import by.htp.actions.Run;
 import by.htp.utils.Scan;
 
-public class MainMenu {
+public class LibrarianMenu {
+	
 
-	public void mainMenu() {
+public static boolean librarianMenu() {
+
 		do {
-		System.out.println("library named after Ostap Bender");
 		System.out.println("Select menu item");
-		System.out.println("1-Login");
-		System.out.println("2-Exit");
+		System.out.println("1-add book");
+		System.out.println("2-add reader");
+		System.out.println("3-take the book by the reader");
+		System.out.println("4-return a book");
+		System.out.println("5-return last menu");
 		try {
 		int i =Integer.parseInt(Scan.getSc().nextLine());
 		switch(i) {
 		case 1:
-			Run.login();
+			Run.addBook(Run.createBook());
 			break;
 		case 2:
-			System.exit(0);
+			Run.addReader(Run.createReader());
 			break;
+			
+			
+			
+		case 5:
+			return true;
+			
 		default:
 			System.out.println("Enter the number of the menu item");
 			break;
@@ -31,5 +41,11 @@ public class MainMenu {
 		}
 		
 	}while(true);
+	
+
+	
+	
+	
+	
 	}
 }

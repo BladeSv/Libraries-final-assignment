@@ -1,5 +1,6 @@
 package by.htp.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ private String pass;
 private int nunberReadBooks;
 private String status;
 
-private List<BookTransaction> takenBooks;
+private List<BookTransaction> takenBooks =new ArrayList<BookTransaction>();
 
 
 

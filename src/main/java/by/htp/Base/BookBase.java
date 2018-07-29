@@ -13,6 +13,9 @@ public class BookBase implements Serializable{
 	
 	private List<Book> bookCatalog =new ArrayList<Book>();
 	private Map <Book , BookTransaction> issuedBooks =new HashMap<Book, BookTransaction>();
+	
+	
+	
 	public BookBase(List<Book> bookCatalog, Map<Book, BookTransaction> issuedBooks) {
 		super();
 		this.bookCatalog = bookCatalog;
