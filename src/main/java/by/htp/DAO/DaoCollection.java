@@ -41,11 +41,11 @@ public class DaoCollection implements DAO{
 	
 
 	public void returnBook( Book book) {
-		if(bookBase.getIssuedBooks().containsKey(book)) {
-			Reader.
-			bookBase.getIssuedBooks().remove(book)	;
-			
-		}
+//		if(bookBase.getIssuedBooks().containsKey(book)) {
+//			Reader.
+//			bookBase.getIssuedBooks().remove(book)	;
+//			
+//		}
 		
 	}
 	

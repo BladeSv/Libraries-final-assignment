@@ -116,8 +116,9 @@ public class Run {
 		System.out.println("Enter your lastname");
 		String secondname = Scan.getSc().nextLine();
 		reader.setSecondName(secondname);
-	
-		
+		System.out.println("Enter your phone nunber");
+		String phoneNumber = Scan.getSc().nextLine();
+		reader.setPhoneNumber(phoneNumber);
 		
 		return reader;
 	}

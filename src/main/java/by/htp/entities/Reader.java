@@ -2,7 +2,10 @@ package by.htp.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class Reader implements Serializable{
@@ -17,8 +20,11 @@ private String login;
 private String pass;
 private int nunberReadBooks;
 private String status;
-
+private String phoneNumber;
 private List<BookTransaction> takenBooks =new ArrayList<BookTransaction>();
+private Map <BookTransaction, GregorianCalendar> returnBooke =new HashMap<BookTransaction, GregorianCalendar>();
+
+
 
 
 
@@ -28,7 +34,8 @@ private List<BookTransaction> takenBooks =new ArrayList<BookTransaction>();
 
 
 public Reader(String name, String secondName, String surname, String login, String pass, int nunberReadBooks,
-		String status, List<BookTransaction> takenBooks) {
+		String status, String phoneNumber, List<BookTransaction> takenBooks,
+		Map<BookTransaction, GregorianCalendar> returnBooke) {
 	super();
 	this.name = name;
 	this.secondName = secondName;
@@ -37,7 +44,29 @@ public Reader(String name, String secondName, String surname, String login, Stri
 	this.pass = pass;
 	this.nunberReadBooks = nunberReadBooks;
 	this.status = status;
+	this.phoneNumber = phoneNumber;
 	this.takenBooks = takenBooks;
+	this.returnBooke = returnBooke;
+}
+
+
+public String getPhoneNumber() {
+	return phoneNumber;
+}
+
+
+public void setPhoneNumber(String phoneNumber) {
+	this.phoneNumber = phoneNumber;
+}
+
+
+public Map<BookTransaction, GregorianCalendar> getReturnBooke() {
+	return returnBooke;
+}
+
+
+public void setReturnBooke(Map<BookTransaction, GregorianCalendar> returnBooke) {
+	this.returnBooke = returnBooke;
 }
 
 
@@ -127,6 +156,8 @@ public int hashCode() {
 	result = prime * result + ((name == null) ? 0 : name.hashCode());
 	result = prime * result + nunberReadBooks;
 	result = prime * result + ((pass == null) ? 0 : pass.hashCode());
+	result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
+	result = prime * result + ((returnBooke == null) ? 0 : returnBooke.hashCode());
 	result = prime * result + ((secondName == null) ? 0 : secondName.hashCode());
 	result = prime * result + ((status == null) ? 0 : status.hashCode());
 	result = prime * result + ((surname == null) ? 0 : surname.hashCode());
@@ -161,6 +192,16 @@ public boolean equals(Object obj) {
 			return false;
 	} else if (!pass.equals(other.pass))
 		return false;
+	if (phoneNumber == null) {
+		if (other.phoneNumber != null)
+			return false;
+	} else if (!phoneNumber.equals(other.phoneNumber))
+		return false;
+	if (returnBooke == null) {
+		if (other.returnBooke != null)
+			return false;
+	} else if (!returnBooke.equals(other.returnBooke))
+		return false;
 	if (secondName == null) {
 		if (other.secondName != null)
 			return false;
@@ -188,8 +229,8 @@ public boolean equals(Object obj) {
 @Override
 public String toString() {
 	return "Reader [name=" + name + ", secondName=" + secondName + ", surname=" + surname + ", login=" + login
-			+ ", pass=" + pass + ", nunberReadBooks=" + nunberReadBooks + ", status=" + status + ", takenBooks="
-			+ takenBooks + "]";
+			+ ", pass=" + pass + ", nunberReadBooks=" + nunberReadBooks + ", status=" + status + ", phoneNumber="
+			+ phoneNumber + ", takenBooks=" + takenBooks + ", returnBooke=" + returnBooke + "]";
 }
 
  
