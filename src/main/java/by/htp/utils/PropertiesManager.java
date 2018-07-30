@@ -6,7 +6,7 @@ public class PropertiesManager {
 
 	public static final ResourceBundle rs;
 	static{
-		rs=ResourceBundle.getBundle("cofig");
+		rs=ResourceBundle.getBundle("config");
 		
 	}
 	public static String getStatus() {

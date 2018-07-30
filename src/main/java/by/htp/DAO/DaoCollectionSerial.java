@@ -21,7 +21,8 @@ public  ReaderBase inputReaderBase() {
 		ObjectInputStream ois;
 		ReaderBase readerBase = null;
 		try {
-			ois = new ObjectInputStream(new FileInputStream("/libraries/src/main/resources/SerializableBase/ReaderBase.ser"));
+			
+			ois = new ObjectInputStream(new FileInputStream("src\\main\\resources\\SerializableBase\\ReaderBase.ser"));
 			readerBase = (ReaderBase)ois.readObject();
 		} catch (FileNotFoundException e) {
 			System.out.println("File ReaderBase.ser not found");
@@ -41,7 +42,8 @@ public  BookBase inputBookBase() {
 		ObjectInputStream ois;
 		BookBase bookBase = null;
 		try {
-			ois = new ObjectInputStream(new FileInputStream("/libraries/src/main/resources/SerializableBase/BookBase.ser"));
+		
+			ois = new ObjectInputStream(new FileInputStream("src\\main\\resources\\SerializableBase\\BookBase.ser"));
 			bookBase = (BookBase)ois.readObject();
 		} catch (FileNotFoundException e) {
 			System.out.println("File BookBase.ser not found");
@@ -62,7 +64,7 @@ public  void outputReaderBase(ReaderBase readerBase)  {
 		
 		;
 		try {
-			ObjectOutputStream ous=ous = new ObjectOutputStream(new FileOutputStream("/libraries/src/main/resources/SerializableBase/ReaderBase.ser"));
+			ObjectOutputStream ous = new ObjectOutputStream(new FileOutputStream("src\\main\\resources\\SerializableBase\\ReaderBase.ser"));
 			ous.writeObject(readerBase);
 			ous.flush();
 			ous.close();
@@ -79,7 +81,7 @@ public  void outputBookBase(BookBase bookBase)  {
 			
 			
 			try {
-				ObjectOutputStream ous=ous = new ObjectOutputStream(new FileOutputStream("/libraries/src/main/resources/SerializableBase/BookBase.ser"));
+				ObjectOutputStream ous = new ObjectOutputStream(new FileOutputStream("src\\main\\resources\\SerializableBase\\BookBase.ser"));
 				ous.writeObject(bookBase);
 				ous.flush();
 				ous.close();

@@ -7,10 +7,14 @@ import java.util.Map;
 
 import by.htp.entities.Book;
 import by.htp.entities.BookTransaction;
-import by.htp.entities.Reader;
+
 
 public class BookBase implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2185682037681067208L;
 	private List<Book> bookCatalog =new ArrayList<Book>();
 	private Map <Book , BookTransaction> issuedBooks =new HashMap<Book, BookTransaction>();
 	

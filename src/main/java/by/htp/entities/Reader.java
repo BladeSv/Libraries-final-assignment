@@ -1,10 +1,15 @@
 package by.htp.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-public class Reader {
+
+public class Reader implements Serializable{
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2053488333778154190L;
 private String name;
 private String secondName;
 private String surname;

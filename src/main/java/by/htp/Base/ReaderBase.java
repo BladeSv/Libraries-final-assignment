@@ -7,6 +7,10 @@ import java.util.List;
 import by.htp.entities.Reader;
 
 public class ReaderBase implements Serializable {
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9078628416430207900L;
 private List<Reader> readerBase =new ArrayList<Reader>();
 
 

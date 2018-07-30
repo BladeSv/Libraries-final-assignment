@@ -1,7 +1,13 @@
 package by.htp.entities;
 
-public class Autor {
+import java.io.Serializable;
 
+public class Autor implements Serializable {
+
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3948939046148889299L;
 private String name;
 private String Surname;
 public String getName() {

@@ -13,4 +13,23 @@ public static Scanner getSc() {
 	}
 	return sc;
 }
+
+
+public static int enterInt() {
+	boolean check=false;
+	int i=0;
+	do {
+	try {
+		 i =Integer.parseInt(getSc().nextLine());
+		
+		check=false;
+}catch (java.lang.NumberFormatException e) {
+	System.out.println("Incorrect enter format-Integer, try again");
+	check=true;
+}
+	
+}while(check);
+
+	return i;
+}
 }
