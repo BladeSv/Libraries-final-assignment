@@ -1,14 +1,18 @@
 package by.htp.menu;
 
+import by.htp.actions.BookActions;
 import by.htp.actions.Run;
+import by.htp.entities.Reader;
 import by.htp.utils.Scan;
 
 public class ReaderMenu {
 
-	public static boolean readerMenu(){
+	public static boolean readerMenu(Reader reader){
 		
 		
 		do {
+			System.out.println();
+			System.out.println("Hello reader. Your ID: "+(Run.getDao().outReaderList().indexOf(reader)+1));
 			System.out.println("Select menu item");
 			System.out.println("1-view book catalog");
 			System.out.println("2-view detailed information about a particular book");
@@ -18,10 +22,10 @@ public class ReaderMenu {
 			int i =Scan.enterInt();
 			switch(i) {
 			case 1:
-				Run.viewCatalogBook();
+				BookActions.viewCatalogBook();
 				break;
 			case 2:
-				Run.addReader(Run.createReader());
+				BookActions.detailedInformationBook();
 				break;
 				
 				

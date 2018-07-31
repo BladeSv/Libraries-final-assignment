@@ -9,7 +9,7 @@ public class Autor implements Serializable {
 	 */
 	private static final long serialVersionUID = -3948939046148889299L;
 private String name;
-private String Surname;
+private String surname;
 public String getName() {
 	return name;
 }
@@ -17,15 +17,15 @@ public void setName(String name) {
 	this.name = name;
 }
 public String getSurname() {
-	return Surname;
+	return surname;
 }
 public void setSurname(String surname) {
-	Surname = surname;
+	this.surname = surname;
 }
 public Autor(String name, String surname) {
 	super();
 	this.name = name;
-	Surname = surname;
+	this.surname = surname;
 }
 public Autor() {
 	super();
@@ -33,13 +33,13 @@ public Autor() {
 }
 @Override
 public String toString() {
-	return "Autor [name=" + name + ", Surname=" + Surname + "]";
+	return ", autor: "+surname+" " + name ;
 }
 @Override
 public int hashCode() {
 	final int prime = 31;
 	int result = 1;
-	result = prime * result + ((Surname == null) ? 0 : Surname.hashCode());
+	result = prime * result + ((surname == null) ? 0 : surname.hashCode());
 	result = prime * result + ((name == null) ? 0 : name.hashCode());
 	return result;
 }
@@ -52,10 +52,10 @@ public boolean equals(Object obj) {
 	if (getClass() != obj.getClass())
 		return false;
 	Autor other = (Autor) obj;
-	if (Surname == null) {
-		if (other.Surname != null)
+	if (surname == null) {
+		if (other.surname != null)
 			return false;
-	} else if (!Surname.equals(other.Surname))
+	} else if (!surname.equals(other.surname))
 		return false;
 	if (name == null) {
 		if (other.name != null)

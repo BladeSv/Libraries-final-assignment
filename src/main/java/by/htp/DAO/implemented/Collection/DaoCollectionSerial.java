@@ -1,4 +1,4 @@
-package by.htp.DAO;
+package by.htp.DAO.implemented.Collection;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

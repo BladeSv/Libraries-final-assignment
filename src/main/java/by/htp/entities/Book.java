@@ -66,12 +66,12 @@ public class Book implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	public String toStringSneaky() {
-		return "Book [id=" + id + ", title=" + title + ", autor=" + autor + "]";
+		return "Book id: " + id + ", book title: " + title + autor;
 	}
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", title=" + title + ", autor=" + autor + ", annotation=" + annotation
-				+ ", numberOutput=" + numberOutput + "]";
+		return "Book id: " + id + ", book title: " + title + autor + ", book annotation: " + annotation;
+			
 	}
 	@Override
 	public int hashCode() {

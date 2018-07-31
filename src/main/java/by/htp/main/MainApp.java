@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 import by.htp.DAO.DAO;
-import by.htp.DAO.DaoCollection;
+import by.htp.DAO.implemented.Collection.DaoCollection;
 import by.htp.actions.Run;
 import by.htp.entities.BookTransaction;
 import by.htp.entities.Reader;
