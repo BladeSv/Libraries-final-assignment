@@ -33,7 +33,7 @@ public Autor() {
 }
 @Override
 public String toString() {
-	return ", autor: "+surname+" " + name ;
+	return ", autor: "+name+" " + surname ;
 }
 @Override
 public int hashCode() {

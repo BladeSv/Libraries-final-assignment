@@ -39,7 +39,7 @@ public static int enterInt() {
 }
 public static GregorianCalendar enterDate() {
 	GregorianCalendar gc=null;
-	if(Run.getSessionDate()==null) {
+	
 		System.out.println("Enter the date, date entry format - dd.mm.yyyy ");
 		SimpleDateFormat sf =new SimpleDateFormat("dd.MM.yyyy");
 
@@ -59,7 +59,7 @@ public static GregorianCalendar enterDate() {
 		}while(check);
 		
 		
-	}
+	
 	return gc;
 }
 

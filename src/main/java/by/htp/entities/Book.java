@@ -51,9 +51,10 @@ public class Book implements Serializable{
 
 	
 	
-	public Book(int id, String title, Autor autor, String annotation, int numberOutput) {
+	public Book(String title, Autor autor, String annotation, int numberOutput) {
 		super();
-		this.id = id;
+		id_count++;
+		this.id = id_count;
 		this.title = title;
 		this.autor = autor;
 		this.annotation = annotation;

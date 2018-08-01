@@ -17,22 +17,25 @@ public class Reader implements Serializable {
 	private String surname;
 	private String login;
 	private String pass;
-	private int nunberReadBooks;
+
 	private String status;
 	private String phoneNumber;
 	private List<BookTransaction> takenBooks = new ArrayList<BookTransaction>();
 	private Map<BookTransaction, GregorianCalendar> returnBooke = new HashMap<BookTransaction, GregorianCalendar>();
 
-	public Reader(String name, String secondName, String surname, String login, String pass, int nunberReadBooks,
-			String status, String phoneNumber, List<BookTransaction> takenBooks,
-			Map<BookTransaction, GregorianCalendar> returnBooke) {
+	public Reader() {
+		super();
+	
+	}
+
+	public Reader(String name, String secondName, String surname, String login, String pass, String status,
+			String phoneNumber, List<BookTransaction> takenBooks, Map<BookTransaction, GregorianCalendar> returnBooke) {
 		super();
 		this.name = name;
 		this.secondName = secondName;
 		this.surname = surname;
 		this.login = login;
 		this.pass = pass;
-		this.nunberReadBooks = nunberReadBooks;
 		this.status = status;
 		this.phoneNumber = phoneNumber;
 		this.takenBooks = takenBooks;
@@ -75,10 +78,7 @@ public class Reader implements Serializable {
 		this.status = status;
 	}
 
-	public Reader() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+
 
 	public String getName() {
 		return name;
@@ -108,13 +108,6 @@ public class Reader implements Serializable {
 		return login;
 	}
 
-	public int getNunberReadBooks() {
-		return nunberReadBooks;
-	}
-
-	public void setNunberReadBooks(int nunberReadBooks) {
-		this.nunberReadBooks = nunberReadBooks;
-	}
 
 	public List<BookTransaction> getTakenBooks() {
 		return takenBooks;
@@ -130,7 +123,6 @@ public class Reader implements Serializable {
 		int result = 1;
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + nunberReadBooks;
 		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
 		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
 		result = prime * result + ((returnBooke == null) ? 0 : returnBooke.hashCode());
@@ -159,8 +151,6 @@ public class Reader implements Serializable {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
-			return false;
-		if (nunberReadBooks != other.nunberReadBooks)
 			return false;
 		if (pass == null) {
 			if (other.pass != null)
@@ -203,7 +193,7 @@ public class Reader implements Serializable {
 	@Override
 	public String toString() {
 		return "Reader: " + surname + " " + name + " " + secondName + ", login: " + login + ", pass: " + pass
-				+ ", phone number: " + phoneNumber + ", number read books:" + nunberReadBooks + ", number taken books:"
+				+ ", phone number: " + phoneNumber + ", number read books:" + returnBooke.size() + ", number taken books:"
 				+ takenBooks.size();
 	}
 

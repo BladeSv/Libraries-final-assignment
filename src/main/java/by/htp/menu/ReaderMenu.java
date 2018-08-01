@@ -13,6 +13,9 @@ public class ReaderMenu {
 		do {
 			System.out.println();
 			System.out.println("Hello reader. Your ID: "+(Run.getDao().outReaderList().indexOf(reader)+1));
+			if(Run.getDao().checkDebtReader(reader)) {
+				System.out.println("You have books that you did not return within 30 days");
+			}
 			System.out.println("Select menu item");
 			System.out.println("1-view book catalog");
 			System.out.println("2-view detailed information about a particular book");
