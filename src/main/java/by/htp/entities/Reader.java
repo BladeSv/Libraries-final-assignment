@@ -32,7 +32,21 @@ public class Reader implements Serializable {
 
 	
 	}
-
+	public Reader(int id,String name, String secondName, String surname, String login, String pass, String status,
+			String phoneNumber, List<BookTransaction> takenBooks, Map<Book, GregorianCalendar> returnBooke) {
+		super();
+		
+		this.id = id;
+		this.name = name;
+		this.secondName = secondName;
+		this.surname = surname;
+		this.login = login;
+		this.pass = pass;
+		this.status = status;
+		this.phoneNumber = phoneNumber;
+		this.takenBooks = takenBooks;
+		this.returnBooke = returnBooke;
+	}
 	public Reader(String name, String secondName, String surname, String login, String pass, String status,
 			String phoneNumber, List<BookTransaction> takenBooks, Map<Book, GregorianCalendar> returnBooke) {
 		super();

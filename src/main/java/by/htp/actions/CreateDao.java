@@ -2,6 +2,7 @@ package by.htp.actions;
 
 import by.htp.DAO.DAO;
 import by.htp.DAO.implemented.Collection.DaoCollection;
+import by.htp.DAO.implemented.SQL.DaoSQL;
 import by.htp.utils.PropertiesManager;
 
 public class CreateDao {
@@ -11,6 +12,11 @@ public class CreateDao {
 			dao = new DaoCollection();
 		}
 
+		if (PropertiesManager.getStatus().equals("2")) {
+			dao = new DaoSQL();
+		}
+		
+		
 		return dao;
 	}
 }

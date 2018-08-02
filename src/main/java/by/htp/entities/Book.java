@@ -48,7 +48,15 @@ public class Book implements Serializable{
 	public static void setId_count(int id_count) {
 		Book.id_count = id_count;
 	}
-
+	public Book(int id, String title, Autor autor, String annotation, int numberOutput) {
+		super();
+		
+		this.id = id;
+		this.title = title;
+		this.autor = autor;
+		this.annotation = annotation;
+		this.numberOutput = numberOutput;
+	}
 	
 	
 	public Book(String title, Autor autor, String annotation, int numberOutput) {
