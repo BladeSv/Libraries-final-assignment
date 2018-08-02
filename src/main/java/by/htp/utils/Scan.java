@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
-import by.htp.actions.Run;
+
 
 public class Scan {
 private static Scanner sc=null;

@@ -12,7 +12,7 @@ public class ReaderMenu {
 		
 		do {
 			System.out.println();
-			System.out.println("Hello reader. Your ID: "+(Run.getDao().outReaderList().indexOf(reader)+1));
+			System.out.println("Hello reader. Your ID: "+(reader.getId()));
 			if(Run.getDao().checkDebtReader(reader)) {
 				System.out.println("You have books that you did not return within 30 days");
 			}

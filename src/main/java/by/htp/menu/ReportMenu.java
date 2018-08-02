@@ -14,10 +14,10 @@ public class ReportMenu {
 		do {
 			System.out.println();
 			System.out.println("Select menu item");
-			System.out.println("1-report on readers who are in arrears on the return of books");
-			System.out.println("2-account of books read");
-			System.out.println("3-a report on employees who read at least 2 and not more than 8 books per 30 days.");
-			System.out.println("3-return last menu");
+			System.out.println("1- report on readers who are in arrears on the return of books");
+			System.out.println("2- Aaccount of books read");
+			System.out.println("3- a report on employees who read at least 2 and not more than 8 books per 30 days.");
+			System.out.println("4- return last menu");
 		
 			int i =Scan.enterInt();
 			switch(i) {

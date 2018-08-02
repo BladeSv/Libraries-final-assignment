@@ -22,6 +22,7 @@ public class DaoCollection implements DAO {
 
 	{
 		setIdContBook();
+		setIdContReader();
 	}
 
 	private void save() {
@@ -44,7 +45,7 @@ public class DaoCollection implements DAO {
 		if (bookBase.getIssuedBooks().containsKey(book)) {
 			BookTransaction bookTransaction = bookBase.getIssuedBooks().get(book);
 			GregorianCalendar gc =Scan.enterDate();
-			bookTransaction.getReader().getReturnBooke().put(bookTransaction, gc);
+			bookTransaction.getReader().getReturnBooke().put(book, gc);
 			bookTransaction.getReader().getTakenBooks().remove(bookTransaction);
 			//bookTransaction.getReader().getReturnBooke().put(bookTransaction, Run.getSessionDate());
 			bookBase.getIssuedBooks().remove(book);
@@ -58,21 +59,6 @@ public class DaoCollection implements DAO {
 		return readerBase.getReaderBase();
 	}
 
-	private void setIdContBook() {
-
-		if (!bookBase.getBookCatalog().isEmpty()) {
-			int i = 0;
-			for (Book b : bookBase.getBookCatalog()) {
-				if (b.getId() > i) {
-					i = b.getId();
-				}
-
-			}
-			Book.setId_count(i);
-		} else
-			System.out.println("Book catalog empty");
-
-	}
 
 	@Override
 	public List<Book> outBookList() {
@@ -151,5 +137,37 @@ public class DaoCollection implements DAO {
 		}
 
 	}
+	private void setIdContBook() {
+
+		if (!bookBase.getBookCatalog().isEmpty()) {
+			int i = 0;
+			for (Book b : bookBase.getBookCatalog()) {
+				if (b.getId() > i) {
+					i = b.getId();
+				}
+
+			}
+			Book.setId_count(i);
+		} else
+			System.out.println("Book catalog empty");
+
+	}
+	private void setIdContReader() {
+
+		if (!readerBase.getReaderBase().isEmpty()) {
+			int i = 0;
+			for (Reader b : readerBase.getReaderBase()) {
+				if (b.getId() > i) {
+					i = b.getId();
+				}
+
+			}
+			Reader.setId_count(i);
+		} else
+			System.out.println("Book catalog empty");
+
+	}
+
+
 
 }

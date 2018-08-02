@@ -1,6 +1,7 @@
 package by.htp.actions;
 
 
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -97,11 +98,12 @@ public static boolean returnBook() {
 		System.out.println("This reader dont take book");
 		return false;		
 	}
+	SimpleDateFormat sf =new SimpleDateFormat("dd.MM.yyyy"); 
 	System.out.println("List taken book by this reader:");
 	for(BookTransaction bt: reader.getTakenBooks()) {
-		System.out.println(bt.getBook().toStringSneaky());
+		System.out.println(bt.getBook().toStringSneaky()+"book taken "+sf.format(bt.getDate().getTime()));
 	}
-	System.out.println("Enter the ID of the book you want to return:");
+	System.out.println("What book do you want to return?");
 	Book book=BookActions.getBookAtID();
 	if(book==null) {
 		return false;	
@@ -127,6 +129,10 @@ public static boolean insertBookTransaction() {
 	if(book==null) {
 		return false;
 		
+	}
+	if(dao.checkBookAvailability(book)) {
+		System.out.println("This book has already been taken by another reader");
+		return false;
 	}
 		
 GregorianCalendar tempDate=Scan.enterDate();

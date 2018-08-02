@@ -5,7 +5,7 @@ package by.htp.actions;
 import java.util.List;
 
 import by.htp.DAO.DAO;
-
+import by.htp.entities.Book;
 import by.htp.entities.Reader;
 import by.htp.utils.Scan;
 
@@ -85,7 +85,7 @@ public class ReaderActions {
 		if (!dao.outReaderList().isEmpty()) {
 
 			for (Reader r : dao.outReaderList()) {
-				System.out.println("Reader Index- " + (dao.outReaderList().indexOf(r) + 1));
+				
 				System.out.println(r);
 
 			}
@@ -93,6 +93,13 @@ public class ReaderActions {
 			System.out.println("Reader list is empty");
 		}
 	}
+	
+	
+	
+	
+	
+		
+	
 	public static Reader getReaderAtIndex() {
 
 		int i=0;
@@ -101,14 +108,17 @@ public class ReaderActions {
 			System.out.println("Enter Reader Index");
 			
 			 i =Scan.enterInt();
-			if(((i-1)<0) && ((i-1)> list.size())) {
-				System.out.println("Reader with this Index dont exist");
-				return null;
-			}
+				for (Reader b : list) {
+					if (b.getId() == i) {
+
+						return b;
+					}
+
+				}
 					
 		
 
-		return list.get((i-1));
+		return null;
 		
 	} 	
 	
