@@ -11,7 +11,7 @@ import by.htp.actions.Run;
 import by.htp.entities.Book;
 import by.htp.entities.BookTransaction;
 import by.htp.entities.Reader;
-import by.htp.utils.Scan;
+
 
 public class DaoCollection implements DAO {
 	DaoCollectionSerial daoSer = new DaoCollectionSerial();
@@ -41,13 +41,13 @@ public class DaoCollection implements DAO {
 		save();
 	}
 
-	public void returnBook(Book book) {
+	public void returnBook(Book book, GregorianCalendar date) {
 		if (bookBase.getIssuedBooks().containsKey(book)) {
 			BookTransaction bookTransaction = bookBase.getIssuedBooks().get(book);
-			GregorianCalendar gc =Scan.enterDate();
-			bookTransaction.getReader().getReturnBooke().put(book, gc);
+		
+			bookTransaction.getReader().getReturnBooke().add( date);
 			bookTransaction.getReader().getTakenBooks().remove(bookTransaction);
-			//bookTransaction.getReader().getReturnBooke().put(bookTransaction, Run.getSessionDate());
+			
 			bookBase.getIssuedBooks().remove(book);
 
 		}

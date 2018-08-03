@@ -34,15 +34,76 @@ public class SqlQueriesManager {
 		return rs.getString("db.outTransList");
 		
 	}
+	public static String outReturnBooListkDB() {
+		return rs.getString("db.outReturnBookList");
+		
+	}
 	public static String addReturnBookDB() {
 		return rs.getString("db.addReturnBook");
 		
 	}
-	
-	
-	public static String addTransactionDB() {
-		return rs.getString("db.addTransaction");
+	public static String outReaderFromBookTransByBookDB() {
+		return rs.getString("db.outReaderFromBookTransByBook");
 		
 	}
+	
+	public static String deleteFromBookTransByBookDB() {
+		return rs.getString("db.deleteFromBookTransByBook");
+		
+	}
+	public static String deleteFromBookBaseByBookDB() {
+		return rs.getString("db.deleteFromBookBaseByBook");
+		
+	}
+	public static String deleteFromBookReturnByBookDB() {
+		return rs.getString("db.deleteFromBookReturnByBook");
+		
+	}
+
+public static String deleteFromBookTransByReaderDB() {
+	return rs.getString("db.deleteFromBookTransByReader");
+	
+}
+	
+public static String deleteFromReaderBaseByReaderDB() {
+	return rs.getString("db.deleteFromReaderBaseByReader");
+	
+}	
+	
+public static String deleteFromBookReturnByReaderDB() {
+	return rs.getString("db.deleteFromBookReturnByReader");
+	
+}	
+	
+public static String outDateFromBookTransByReaderDB() {
+	return rs.getString("db.outDateFromBookTransByReader");
+	
+}	
+	
+public static String outCounBookTransByReaderDB() {
+	return rs.getString("db.outCounBookTransByReader");
+	
+}	
+
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

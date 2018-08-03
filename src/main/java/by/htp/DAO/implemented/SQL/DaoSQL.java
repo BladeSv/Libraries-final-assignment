@@ -10,10 +10,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.mysql.cj.util.StringUtils;
-import com.mysql.cj.xdevapi.Statement;
+
+
 
 import by.htp.DAO.DAO;
+import by.htp.actions.Run;
 import by.htp.entities.Autor;
 import by.htp.entities.Book;
 import by.htp.entities.BookTransaction;
@@ -83,32 +84,278 @@ public class DaoSQL implements DAO{
 	}
 
 	@Override
-	public void returnBook(Book book) {
-		// TODO Auto-generated method stub
+	public void returnBook(Book book,GregorianCalendar date) {
+	
+		int idReader = 0;
+		try(PreparedStatement ps=getPS(outReaderFromBookTransByBookDB()) ){
+		
+			
+			ps.setInt(1, book.getId());
+			
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			idReader=rs.getInt(1);
+		
+			} catch (SQLException e) {
+				System.err.println("Cant outReaderFromBookTransDB");
+			
+			
+			}
+		
+		
+	
+		try(PreparedStatement ps=getPS(addReturnBookDB()) ){
+			ps.setInt(1, idReader);		
+			ps.setDate(2, new Date(date.getTimeInMillis()));
+			ps.executeUpdate();			
+			} catch (SQLException e) {
+				System.err.println("Cant add returnBase book");		
+				e.printStackTrace();
+			
+			}
+		
+		try(PreparedStatement ps=getPS(deleteFromBookTransByBookDB()) ){
+			ps.setInt(1, book.getId());
+	
+			ps.executeUpdate();
+			
+			} catch (SQLException e) {
+				System.err.println("Cant del book from book transaction base");		
+				e.printStackTrace();
+			
+			}
+		
 		
 	}
 
 	@Override
 	public void deleteBook(Book book) {
-		// TODO Auto-generated method stub
+		try(PreparedStatement ps=getPS(deleteFromBookBaseByBookDB()) ){
+			ps.setInt(1, book.getId());
+	
+			ps.executeUpdate();
+			
+			} catch (SQLException e) {
+				System.err.println("Cant del book from book base");		
+				e.printStackTrace();
+			
+			}
+		try(PreparedStatement ps=getPS(deleteFromBookReturnByBookDB()) ){
+			ps.setInt(1, book.getId());
+	
+			ps.executeUpdate();
+			
+			} catch (SQLException e) {
+				System.err.println("Cant del book from returnBook base");		
+				e.printStackTrace();
+			
+			}
+		try(PreparedStatement ps=getPS(deleteFromBookTransByBookDB()) ){
+			ps.setInt(1, book.getId());
+	
+			ps.executeUpdate();
+			
+			} catch (SQLException e) {
+				System.err.println("Cant del book from transaction base");		
+				e.printStackTrace();
+			
+			}
+
 		
 	}
 
 	@Override
 	public void deleteReader(Reader reader) {
-		// TODO Auto-generated method stub
+
+	
+		try(PreparedStatement ps=getPS(deleteFromReaderBaseByReaderDB()) ){
+			ps.setInt(1, reader.getId());
+			
+			ps.executeUpdate();
+			
+			} catch (SQLException e) {
+				System.err.println("Cant del reader from readerBase");		
+			
+			}
+		try(PreparedStatement ps=getPS(deleteFromBookTransByReaderDB()) ){
+			ps.setInt(1, reader.getId());
 		
+			ps.executeUpdate();
+			
+			} catch (SQLException e) {
+				System.err.println("Cant del reader from transaction base");		
+			
+			}
+		try(PreparedStatement ps=getPS(deleteFromBookReturnByReaderDB()) ){
+			ps.setInt(1, reader.getId());
+		
+			ps.executeUpdate();
+			
+			} catch (SQLException e) {
+				System.err.println("Cant del reader from return base");		
+			
+			}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	@Override
+	public boolean checkDebtReader(Reader reader) {
+	boolean check=false;
+	try(PreparedStatement ps=getPS(outDateFromBookTransByReaderDB()) ){
+		ps.setInt(1, reader.getId());
+	
+		ResultSet rs=ps.executeQuery();
+		while(rs.next()) {
+			Date date=rs.getDate(1);
+			
+			
+			
+			long difference =Run.getSessionDate().getTimeInMillis()-date.getTime();				
+			
+			int days = (int) (difference / (24 * 60 * 60 * 1000));
+			if(days>30) {
+				check=true;
+			}
+			
+					}
+		
+
+		
+		} catch (SQLException e) {
+			System.err.println("Cant del reader");		
+		
+		}
+		
+		
+	return check;
 	}
 
 	@Override
+	public boolean checkBookHand(Reader reader) {
+		boolean check=false;
+		try(PreparedStatement ps=getPS(outCounBookTransByReaderDB()) ){
+			ps.setInt(1, reader.getId());
+		
+			ResultSet rs=ps.executeQuery();
+			if(rs.next()) {
+				int count=rs.getInt(1);
+				if(count>=3) {
+					check=true;	
+					
+				}
+			}
+			
+
+			
+			} catch (SQLException e) {
+				System.err.println("Cant del reader");		
+			
+			}
+			
+			
+		return check;
+		}
+	
+
+	@Override
+	public boolean checkBookAvailability(Book book) {
+
+
+		
+		boolean check=false;
+		try(PreparedStatement ps=getPS(outReaderFromBookTransByBookDB()) ){
+			ps.setInt(1, book.getId());
+		
+			ResultSet rs=ps.executeQuery();
+			if(rs.next()) {
+				
+			
+					check=true;	
+					
+				}
+			
+			
+
+			
+			} catch (SQLException e) {
+				System.err.println("Cant del reader");		
+			
+			}
+			
+			
+		return check;
+		}
+	
+	
+	
+	
+	
+	
+	@Override
 	public Map<Book, BookTransaction> bookTransactionList() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Map<Book, BookTransaction> bookTransactionList =new HashMap<>();
+		List<BookTransaction> listBookTransaction=new ArrayList<>();
+		List<Reader> list=new ArrayList<>();
+		try(PreparedStatement ps=getPS(outReaderListDB()) ){
+			ResultSet rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				list.add(buildReader(rs));
+				
+			}
+		
+			} catch (SQLException e) {
+				System.err.println("Cant reader list");		
+			
+			}
+		try(PreparedStatement ps=getPS(outTransListDB()) ){
+			ResultSet rs=ps.executeQuery();
+			
+			listBookTransaction=buildBookTransactionList(rs, list);
+		
+			} catch (SQLException e) {
+				System.err.println("Cant reade Book Transaction list");		
+			
+			}
+		
+		try(PreparedStatement ps=getPS(outReturnBooListkDB()) ){
+			ResultSet rs=ps.executeQuery();
+			addReturnBook(rs, list);
+		
+		
+			} catch (SQLException e) {
+				System.err.println("Cant reade Book Transaction list");		
+			
+			}
+		
+		for(BookTransaction bt :listBookTransaction) {
+			bookTransactionList.put(bt.getBook(), bt);
+			
+		}
+		
+		return bookTransactionList;
 	}
 
+	
+	
+	
+	
+	
 	@Override
 	public List<Reader> outReaderList() {
 		List<Reader> list=new ArrayList<>();
+		
 		try(PreparedStatement ps=getPS(outReaderListDB()) ){
 			ResultSet rs=ps.executeQuery();
 			
@@ -130,17 +377,17 @@ public class DaoSQL implements DAO{
 			buildBookTransactionList(rs, list);
 		
 			} catch (SQLException e) {
-				System.err.println("Cant take book");		
+				System.err.println("Cant reade Book Transaction list");		
 			
 			}
 		
-		try(PreparedStatement ps=getPS(addReturnBookDB()) ){
+		try(PreparedStatement ps=getPS(outReturnBooListkDB()) ){
 			ResultSet rs=ps.executeQuery();
 			addReturnBook(rs, list);
 		
 		
 			} catch (SQLException e) {
-				System.err.println("Cant take book");		
+				System.err.println("Cant reade Book Transaction list");		
 			
 			}
 		return list;
@@ -165,23 +412,7 @@ public class DaoSQL implements DAO{
 		return list;
 	}
 
-	@Override
-	public boolean checkDebtReader(Reader reader) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
-	@Override
-	public boolean checkBookHand(Reader reader) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean checkBookAvailability(Book book) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
 	private Book buildBook(ResultSet rs) throws SQLException {
 		int id=rs.getInt(1);
@@ -208,7 +439,7 @@ public class DaoSQL implements DAO{
 		String phoneNumber=rs.getString(8);
 		
 		
-		Reader reader =new Reader(id, name, secondName, surname, login, pass, status, phoneNumber, new ArrayList<BookTransaction>(), new HashMap<Book, GregorianCalendar>());
+		Reader reader =new Reader(id, name, secondName, surname, login, pass, status, phoneNumber, new ArrayList<BookTransaction>(), new ArrayList< GregorianCalendar>());
 		return reader;
 	}
 private List<BookTransaction> buildBookTransactionList(ResultSet rs,List<Reader> readerList) throws SQLException{
@@ -237,14 +468,14 @@ private List<BookTransaction> buildBookTransactionList(ResultSet rs,List<Reader>
 
 private void addReturnBook(ResultSet rs,List<Reader> readerList) throws SQLException{
 	while(rs.next()) {
-		Book book=buildBook(rs);
 		
-		int idReader=rs.getInt(8);
+		
+		int idReader=rs.getInt(2);
 		GregorianCalendar returnDate=new GregorianCalendar();
-		returnDate.setTimeInMillis(rs.getDate(10).getTime());
+		returnDate.setTimeInMillis(rs.getDate(3).getTime());
 		for(Reader r :readerList) {
 			if(r.getId()==idReader) {
-				r.getReturnBooke().put(book, returnDate);
+				r.getReturnBooke().add(returnDate);
 			}
 			}
 		

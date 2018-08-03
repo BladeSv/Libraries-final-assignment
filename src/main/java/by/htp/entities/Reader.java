@@ -23,7 +23,7 @@ public class Reader implements Serializable {
 	private String status;
 	private String phoneNumber;
 	private List<BookTransaction> takenBooks = new ArrayList<BookTransaction>();
-	private Map<Book, GregorianCalendar> returnBooke = new HashMap<Book, GregorianCalendar>();
+	private List<GregorianCalendar> returnBooke=new ArrayList<GregorianCalendar>();
 
 	public Reader() {
 		super();
@@ -33,7 +33,7 @@ public class Reader implements Serializable {
 	
 	}
 	public Reader(int id,String name, String secondName, String surname, String login, String pass, String status,
-			String phoneNumber, List<BookTransaction> takenBooks, Map<Book, GregorianCalendar> returnBooke) {
+			String phoneNumber, List<BookTransaction> takenBooks, List<GregorianCalendar> returnBooke) {
 		super();
 		
 		this.id = id;
@@ -48,7 +48,7 @@ public class Reader implements Serializable {
 		this.returnBooke = returnBooke;
 	}
 	public Reader(String name, String secondName, String surname, String login, String pass, String status,
-			String phoneNumber, List<BookTransaction> takenBooks, Map<Book, GregorianCalendar> returnBooke) {
+			String phoneNumber, List<BookTransaction> takenBooks, List<GregorianCalendar> returnBooke) {
 		super();
 		id_count++;
 		this.id = id_count;
@@ -83,11 +83,11 @@ public class Reader implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Map<Book, GregorianCalendar> getReturnBooke() {
+	public List<GregorianCalendar> getReturnBooke() {
 		return returnBooke;
 	}
 
-	public void setReturnBooke(Map<Book, GregorianCalendar> returnBooke) {
+	public void setReturnBooke(List<GregorianCalendar> returnBooke) {
 		this.returnBooke = returnBooke;
 	}
 

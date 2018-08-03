@@ -79,7 +79,15 @@ public class Book implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Book id: " + id + ", book title: " + title + autor + ", book annotation: " + annotation;
+	StringBuilder strb=new StringBuilder(annotation) ;
+		for(int i=70; i<strb.length();i+=70) {			
+			int z= strb.indexOf(" ", i);
+			if(z>0) {		
+			strb.insert(z, "\n");
+			}
+		}
+		
+		return "Book id: " + id + ", book title: " + title + autor + ", \nbook annotation: \n" + strb.toString();
 			
 	}
 	@Override

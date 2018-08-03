@@ -12,7 +12,7 @@ public interface DAO {
 public void addBook(Book book);
 public void addReader(Reader reader);
 public void takeBook(Reader reader,Book book, GregorianCalendar date);
-public void returnBook(Book book);
+public void returnBook(Book book,GregorianCalendar date);
 
 public void deleteBook(Book book);
 public void deleteReader(Reader reader);

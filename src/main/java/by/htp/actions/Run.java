@@ -110,7 +110,8 @@ public static boolean returnBook() {
 	}
 	for(BookTransaction bt: reader.getTakenBooks()) {
 		if(bt.getBook().equals(book)) {
-			dao.returnBook(book);
+			GregorianCalendar gc =Scan.enterDate();
+			dao.returnBook(book, gc);
 			return true;
 		}
 		

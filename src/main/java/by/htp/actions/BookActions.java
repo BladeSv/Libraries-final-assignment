@@ -73,10 +73,11 @@ public class BookActions {
 		if (book != null) {
 			Map<Book, BookTransaction> bookTrans = dao.bookTransactionList();
 			if (bookTrans.containsKey(book)) {
-				System.out.println(book);
-				System.out.println("this book taken "
+				System.out.println("This book taken "
 						+ new SimpleDateFormat("dd.MM.yyyy").format(bookTrans.get(book).getDate().getTime())
-						+ " reader:" + bookTrans.get(book).getReader().toString());
+						+ " reader: id " + bookTrans.get(book).getReader().getId());
+				System.out.println(book);
+				
 			} else {
 				System.out.println(book);
 			}

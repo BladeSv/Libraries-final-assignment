@@ -19,8 +19,13 @@ public class Login {
 
 		System.out.println("Enter login");
 		login = Scan.getSc().nextLine();
+	
 		System.out.println("Enter password");
 		pass = Scan.getSc().nextLine();
+		if(!checkPass(pass)) {
+			System.out.println("Enter password (at least 6 characters and 1 number)");
+			return false;
+		}
 		Reader reader = findReaderlogin(login, pass);
 		if (reader == null) {
 			System.out.println("Reader with this login and password dont exist");

@@ -1,20 +1,18 @@
 package by.htp.actions;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
-import java.util.concurrent.TimeUnit;
+
 
 import by.htp.DAO.DAO;
 import by.htp.entities.Book;
 import by.htp.entities.BookTransaction;
 import by.htp.entities.Reader;
+import by.htp.utils.ComporatorBook;
 
 public class Reports {
 
@@ -25,7 +23,7 @@ public class Reports {
 		
 		boolean check=true;
 	
-		List<BookTransaction> btList =new ArrayList<>();
+		
 		Map <Book , BookTransaction> bookTransactionList=dao.bookTransactionList();
 		Set<Book> bookKey=bookTransactionList.keySet();
 		for(Book b: bookKey) {
@@ -56,16 +54,15 @@ public class Reports {
 	
 public static void  booksReadReport() {
 	System.out.println("Report on the books read:");
-	TreeMap<Integer, Book> SortBook= new TreeMap<>(Collections.reverseOrder());
 	
-	for(Book book: dao.outBookList()) {
-		if(book.getNumberOutput()!=0) {
-			
-			SortBook.put(book.getNumberOutput(), book);
-		}
+	List<Book> bookList=dao.outBookList();
+	bookList.sort(new ComporatorBook());
+
+	for( Book b:bookList) {
+		
+		System.out.println("Book title: "+b.getTitle()+", number of times it was read: "+b.getNumberOutput());
 	}
 	
-	SortBook.forEach((k,l)->System.out.println("Book title: "+l.getTitle()+", number of times it was read: "+k));
 }
 	
 public static void employeesReport() {
@@ -76,12 +73,11 @@ public static void employeesReport() {
 		
 		if(!reader.getReturnBooke().isEmpty()) {
 			int count=0;
-			Set<Book> keyBook= reader.getReturnBooke().keySet();
-			for(Book bookT:keyBook) {
-				GregorianCalendar returnDate=reader.getReturnBooke().get(bookT);
+			for(GregorianCalendar date :reader.getReturnBooke()) {
+			
 				
 				
-				long difference =Run.getSessionDate().getTimeInMillis()-returnDate.getTimeInMillis();						
+				long difference =Run.getSessionDate().getTimeInMillis()-date.getTimeInMillis();						
 				int days = (int) (difference / (24 * 60 * 60 * 1000));
 				if(days<=30) {
 					count++;
