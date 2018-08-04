@@ -19,10 +19,10 @@ public class Login {
 
 		System.out.println("Enter login");
 		login = Scan.getSc().nextLine();
-	
+
 		System.out.println("Enter password");
 		pass = Scan.getSc().nextLine();
-		if(!checkPass(pass)) {
+		if (!checkPass(pass)) {
 			System.out.println("Enter password (at least 6 characters and 1 number)");
 			return false;
 		}
@@ -46,7 +46,7 @@ public class Login {
 	public static boolean checkPass(String pass) {
 
 		Pattern p = Pattern.compile("^(?=.*\\d)(?=.*[A-Za-z])[^\\s]{7,}$");
-	
+
 		// =Pattern.compile("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[1-9])[^\\s]{7,}$");
 		Matcher m = p.matcher(pass);
 		return m.matches();

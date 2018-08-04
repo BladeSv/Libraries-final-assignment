@@ -77,7 +77,7 @@ public class BookActions {
 						+ new SimpleDateFormat("dd.MM.yyyy").format(bookTrans.get(book).getDate().getTime())
 						+ " reader: id " + bookTrans.get(book).getReader().getId());
 				System.out.println(book);
-				
+
 			} else {
 				System.out.println(book);
 			}
@@ -85,15 +85,14 @@ public class BookActions {
 		}
 
 	}
-	
-public static void deleteBook() {
-	
-	Book book =getBookAtID();
-	if(book!=null) {
-		dao.deleteBook(book);
-		
-		
+
+	public static void deleteBook() {
+
+		Book book = getBookAtID();
+		if (book != null) {
+			dao.deleteBook(book);
+
+		}
+
 	}
-	
-}
 }

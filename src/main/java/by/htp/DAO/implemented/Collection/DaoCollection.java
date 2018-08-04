@@ -17,8 +17,8 @@ public class DaoCollection implements DAO {
 	DaoCollectionSerial daoSer = new DaoCollectionSerial();
 	BookBase bookBase = daoSer.inputBookBase();
 	ReaderBase readerBase = daoSer.inputReaderBase();
-//	 BookBase bookBase=new BookBase();
-//	 ReaderBase readerBase =new ReaderBase();
+	// BookBase bookBase=new BookBase();
+	// ReaderBase readerBase =new ReaderBase();
 
 	{
 		setIdContBook();

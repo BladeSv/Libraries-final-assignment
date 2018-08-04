@@ -3,16 +3,13 @@ package by.htp.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
 
 public class Reader implements Serializable {
-	/**
-		 * 
-		 */
+
 	private static final long serialVersionUID = 2053488333778154190L;
-	private static int id_count=0;
+	private static int id_count = 0;
 	private final int id;
 	private String name;
 	private String secondName;
@@ -23,19 +20,19 @@ public class Reader implements Serializable {
 	private String status;
 	private String phoneNumber;
 	private List<BookTransaction> takenBooks = new ArrayList<BookTransaction>();
-	private List<GregorianCalendar> returnBooke=new ArrayList<GregorianCalendar>();
+	private List<GregorianCalendar> returnBooke = new ArrayList<GregorianCalendar>();
 
 	public Reader() {
 		super();
 		id_count++;
 		this.id = id_count;
 
-	
 	}
-	public Reader(int id,String name, String secondName, String surname, String login, String pass, String status,
+
+	public Reader(int id, String name, String secondName, String surname, String login, String pass, String status,
 			String phoneNumber, List<BookTransaction> takenBooks, List<GregorianCalendar> returnBooke) {
 		super();
-		
+
 		this.id = id;
 		this.name = name;
 		this.secondName = secondName;
@@ -47,6 +44,7 @@ public class Reader implements Serializable {
 		this.takenBooks = takenBooks;
 		this.returnBooke = returnBooke;
 	}
+
 	public Reader(String name, String secondName, String surname, String login, String pass, String status,
 			String phoneNumber, List<BookTransaction> takenBooks, List<GregorianCalendar> returnBooke) {
 		super();
@@ -111,8 +109,6 @@ public class Reader implements Serializable {
 		this.status = status;
 	}
 
-
-
 	public String getName() {
 		return name;
 	}
@@ -140,7 +136,6 @@ public class Reader implements Serializable {
 	public String getLogin() {
 		return login;
 	}
-
 
 	public List<BookTransaction> getTakenBooks() {
 		return takenBooks;
@@ -228,9 +223,9 @@ public class Reader implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Reader id: "+id+" " + surname + " " + name + " " + secondName + ", login: " + login + ", pass: " + pass
-				+ ", phone number: " + phoneNumber + ", number read books:" + returnBooke.size() + ", number taken books:"
-				+ takenBooks.size();
+		return "Reader id: " + id + " " + surname + " " + name + " " + secondName + ", login: " + login + ", pass: "
+				+ pass + ", phone number: " + phoneNumber + ", number read books:" + returnBooke.size()
+				+ ", number taken books:" + takenBooks.size();
 	}
 
 }

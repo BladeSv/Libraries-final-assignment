@@ -2,63 +2,70 @@ package by.htp.entities;
 
 import java.io.Serializable;
 
-public class Book implements Serializable{
-	/**
-	 * 
-	 */
+public class Book implements Serializable {
+	
 	private static final long serialVersionUID = 5999267296876099822L;
-	private static int id_count=0;
+	private static int id_count = 0;
 	private final int id;
 	private String title;
 	private Autor autor;
 	private String annotation;
 	private int numberOutput;
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public Autor getAutor() {
 		return autor;
 	}
+
 	public void setAutor(Autor autor) {
 		this.autor = autor;
 	}
-	
+
 	public String getAnnotation() {
 		return annotation;
 	}
+
 	public void setAnnotation(String anotation) {
 		this.annotation = anotation;
 	}
+
 	public int getNumberOutput() {
 		return numberOutput;
 	}
+
 	public void setNumberOutput(int numberOutput) {
 		this.numberOutput = numberOutput;
 	}
+
 	public int getId() {
 		return id;
 	}
-	
+
 	public static int getId_count() {
 		return id_count;
 	}
+
 	public static void setId_count(int id_count) {
 		Book.id_count = id_count;
 	}
+
 	public Book(int id, String title, Autor autor, String annotation, int numberOutput) {
 		super();
-		
+
 		this.id = id;
 		this.title = title;
 		this.autor = autor;
 		this.annotation = annotation;
 		this.numberOutput = numberOutput;
 	}
-	
-	
+
 	public Book(String title, Autor autor, String annotation, int numberOutput) {
 		super();
 		id_count++;
@@ -68,28 +75,32 @@ public class Book implements Serializable{
 		this.annotation = annotation;
 		this.numberOutput = numberOutput;
 	}
+
 	public Book() {
 		super();
 		id_count++;
 		this.id = id_count;
 		// TODO Auto-generated constructor stub
 	}
+
 	public String toStringSneaky() {
 		return "Book id: " + id + ", book title: " + title + autor;
 	}
+
 	@Override
 	public String toString() {
-	StringBuilder strb=new StringBuilder(annotation) ;
-		for(int i=70; i<strb.length();i+=70) {			
-			int z= strb.indexOf(" ", i);
-			if(z>0) {		
-			strb.insert(z, "\n");
+		StringBuilder strb = new StringBuilder(annotation);
+		for (int i = 70; i < strb.length(); i += 70) {
+			int z = strb.indexOf(" ", i);
+			if (z > 0) {
+				strb.insert(z, "\n");
 			}
 		}
-		
+
 		return "Book id: " + id + ", book title: " + title + autor + ", \nbook annotation: \n" + strb.toString();
-			
+
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -101,6 +112,7 @@ public class Book implements Serializable{
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -131,8 +143,5 @@ public class Book implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
-	
-	
+
 }

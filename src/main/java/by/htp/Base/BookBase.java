@@ -1,4 +1,5 @@
 package by.htp.Base;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,39 +9,40 @@ import java.util.Map;
 import by.htp.entities.Book;
 import by.htp.entities.BookTransaction;
 
+public class BookBase implements Serializable {
 
-public class BookBase implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2185682037681067208L;
-	private List<Book> bookCatalog =new ArrayList<Book>();
-	private Map <Book , BookTransaction> issuedBooks =new HashMap<Book, BookTransaction>();
-	
-	
-	
+	private List<Book> bookCatalog = new ArrayList<Book>();
+	private Map<Book, BookTransaction> issuedBooks = new HashMap<Book, BookTransaction>();
+
 	public BookBase(List<Book> bookCatalog, Map<Book, BookTransaction> issuedBooks) {
 		super();
 		this.bookCatalog = bookCatalog;
 		this.issuedBooks = issuedBooks;
 	}
+
 	public BookBase() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	public List<Book> getBookCatalog() {
 		return bookCatalog;
 	}
+
 	public void setBookCatalog(List<Book> bookCatalog) {
 		this.bookCatalog = bookCatalog;
 	}
+
 	public Map<Book, BookTransaction> getIssuedBooks() {
 		return issuedBooks;
 	}
+
 	public void setIssuedBooks(Map<Book, BookTransaction> issuedBooks) {
 		this.issuedBooks = issuedBooks;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -49,6 +51,7 @@ public class BookBase implements Serializable{
 		result = prime * result + ((issuedBooks == null) ? 0 : issuedBooks.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -70,12 +73,10 @@ public class BookBase implements Serializable{
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "BookBase [bookCatalog=" + bookCatalog + ", issuedBooks=" + issuedBooks + "]";
 	}
-	
-	
-	
-	
+
 }
